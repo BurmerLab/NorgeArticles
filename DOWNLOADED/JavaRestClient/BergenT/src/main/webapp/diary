@@ -1,0 +1,16 @@
+Do zrobienia:
+1) Backend
+Zrobic klase article z polami:
+ - id
+ - title
+ - url
+ - image
+
+W JSoupExample2 z metod tested* zrobic pakowanie do map obiektow article z 
+  uzupelnionymi polami
+zrobic rest'a wysylajacego wsystkie obiekty artukolow
+
+2) frontend:
+pobieranie z resta do jakis klas z arrayListami albo cos...
+wpakowanie do JSP - moze byc JSTL albo stripes?
+Dorobic jakis framework JS ktory bedzie jakos fajnie to wyswietlac
