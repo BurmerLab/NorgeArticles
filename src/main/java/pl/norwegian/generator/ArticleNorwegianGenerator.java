@@ -37,7 +37,7 @@ public class ArticleNorwegianGenerator implements ArticleGenerator{
         Article article = new Article();
         article.setId(y);
        
-        if(link.text().equals("o") || link.text().equals("1")){
+        if(isArticleWithOnlyImage(link)){
           article.setImage(img.absUrl("src"));
           article.setHref(linkHref);
           article.setTitle(linkTitle);
@@ -61,4 +61,8 @@ public class ArticleNorwegianGenerator implements ArticleGenerator{
       }
     return articleParameters;
     }
+
+  private boolean isArticleWithOnlyImage(Element link) {
+    return link.text().equals("o") || link.text().equals("1");
+  }
 }
