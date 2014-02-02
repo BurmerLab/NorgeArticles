@@ -2,7 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.nordicPaper;
+package pl.pojo;
+
+import java.io.IOException;
+import pl.pojo.*;
 
 /**
  *
@@ -15,9 +18,13 @@ public class Article {
   private String title;
   private String image;
 
+  public Article() {
+  }
+  
   public long getId() {
     return id;
   }
+
 
   public void setId(long id) {
     this.id = id;
@@ -46,5 +53,4 @@ public class Article {
   public void setImage(String image) {
     this.image = image;
   }
-  
 }

@@ -1,60 +1,26 @@
-package pl.bt.bergent;
+package pl.norwegian.generator;
 /**
  *
  * @author Michal Burmer
  */
-import java.awt.List;
 import java.io.IOException;
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
- 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import pl.nordicPaper.Article;
+import pl.article.ArticleGenerator;
+import pl.pojo.Article;
  
-public class ArticleGenerator {
+public class ArticleNorwegianGenerator implements ArticleGenerator{
   
   public Map<Long, Article> article = new HashMap<Long, Article>();
   
-  
-  public static void main(String[] args) {
-//    final String pageAddress = "http://bt.no";
-    final String pageAddress = "http://www.bt.no/";
-	
-    try {
-      
-      Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-      ArticleGenerator articleGenerator = new ArticleGenerator();
-      
-      for(int x = 1; x<=4; x++){
-        allArticles = articleGenerator.obtainArticleParameters(x, pageAddress);
-        for(int z = 1; z < allArticles.size(); z++){
-          
-          Article article = allArticles.get(z);
-          if(! article.getTitle().equals("o") || article.getTitle().equals("1")){
-            System.out.println("id:  " + article.getId()); 
-            System.out.println("Href:  " + article.getHref()); 
-            System.out.println("Title:  " + article.getTitle()); 
-            System.out.println("Image:  " + article.getImage()); 
-            System.out.println("=========");
-          }
-        }
-      }
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
- 
-  }
-
+  @Override
   public Map<Integer, Article> obtainArticleParameters(int count, String pageAddress) throws IOException{
       
-      Document website = Jsoup.connect("http://"+pageAddress).get();
+      Document website = Jsoup.connect("http://" + pageAddress).get();
       Elements master = website.select(".gridRow.contentLevel"+count);//.default.noThemeHeadline
       Elements links = master.select("a");
       

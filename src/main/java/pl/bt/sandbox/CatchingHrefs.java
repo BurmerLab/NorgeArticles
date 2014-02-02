@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.bt.test;
+package pl.bt.sandbox;
 
 import java.io.IOException;
 import org.jsoup.Jsoup;

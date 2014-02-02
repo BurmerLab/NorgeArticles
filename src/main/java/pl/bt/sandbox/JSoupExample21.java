@@ -1,4 +1,4 @@
-package pl.bt.test;
+package pl.bt.sandbox;
 /**
  *
  * @author Michał

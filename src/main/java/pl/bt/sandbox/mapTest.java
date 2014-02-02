@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.bt.test;
+package pl.bt.sandbox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import pl.nordicPaper.Article;
+import pl.pojo.Article;
 
 /**
  *

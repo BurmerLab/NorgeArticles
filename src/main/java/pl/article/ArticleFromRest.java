@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.obtain;
+package pl.article;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import pl.nordicPaper.Article;
+import pl.pojo.Article;
 
 /**
  *
@@ -22,7 +22,7 @@ import pl.nordicPaper.Article;
 public class ArticleFromRest {
 
 	public static void main(String[] args) throws Exception	{
-      
+//        http://localhost:8084/BergenT/rest/getArticleFromWebsite/bt.no/count/1
 		String json = readUrl("http://localhost:8084/BergenT/rest/getArticleFromWebsite/bt.no/count/3");
         
         Gson gson = new Gson();
@@ -47,8 +47,7 @@ public class ArticleFromRest {
     
 	private static String readUrl(String urlString) throws Exception {
 		BufferedReader reader = null;
-		try
-		{
+		try {
 			URL url = new URL(urlString);
 			reader = new BufferedReader(new InputStreamReader(url.openStream()));
 			StringBuffer buffer = new StringBuffer();

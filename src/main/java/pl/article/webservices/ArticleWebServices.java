@@ -13,14 +13,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.PathParam;
-import pl.bt.bergent.ArticleGenerator;
-import pl.nordicPaper.Article;
+import pl.norwegian.generator.ArticleNorwegianGenerator;
+import pl.pojo.Article;
 
 /**
  *
  * @author Michał
  */
-@Path("")
+@Path("/rest")
 public class ArticleWebServices {
 //http://localhost:8084/BergenT/rest/getArticleFromWebsite/bt.no/count/1
   @GET
@@ -29,10 +29,10 @@ public class ArticleWebServices {
   public String getArticleFromWebsite(@PathParam( "websiteAddress" )String websiteAddress, @PathParam( "number" )int number)
   {
     String allArticlesFromWebsite  = null;
-    try 
-    {
+    
+    try {
       Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-      ArticleGenerator articleGenerator = new ArticleGenerator();
+      ArticleNorwegianGenerator articleGenerator = new ArticleNorwegianGenerator();
       List<Article> articleList = new ArrayList<Article>();
       
       for(int x = 1; x<=number; x++){
@@ -43,12 +43,11 @@ public class ArticleWebServices {
           if(! article.getTitle().equals("o") || article.getTitle().equals("1")){
             
             articleList.add(article);
-            
-            System.out.println("id:  " + article.getId()); 
-            System.out.println("Href:  " + article.getHref()); 
-            System.out.println("Title:  " + article.getTitle()); 
-            System.out.println("Image:  " + article.getImage()); 
-            System.out.println("=========");
+//            System.out.println("id:  " + article.getId()); 
+//            System.out.println("Href:  " + article.getHref()); 
+//            System.out.println("Title:  " + article.getTitle()); 
+//            System.out.println("Image:  " + article.getImage()); 
+//            System.out.println("=========");
           }
         }
       }
@@ -57,15 +56,6 @@ public class ArticleWebServices {
       System.out.println(gson.toJson(articleList));
       allArticlesFromWebsite = gson.toJson(articleList);
       
-      
-//      ArrayList<PointDTO> allRecordsFromTablePointByOSMId = null;
-//      PointManagerModel pointManager= new PointManagerModel();
-//      allRecordsFromTablePointByOSMId = pointManager.obtainRecordFromPointByOSMId(OSMId);
-//      
-//      Gson gson = new Gson();
-//      System.out.println(gson.toJson(allRecordsFromTablePointByOSMId));
-//      allRecordsFromTablePointByOSMIdAsJSON = gson.toJson(allRecordsFromTablePointByOSMId);
-
     } catch (Exception e)
     {
             System.out.println("error");
