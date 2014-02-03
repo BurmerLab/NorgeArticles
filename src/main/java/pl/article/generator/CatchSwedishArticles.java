@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package pl.swedish.generator;
+package pl.article.generator;
 
 import java.io.IOException;
 import java.util.Map;
@@ -13,7 +9,7 @@ import pl.pojo.Article;
  *
  * @author Michał
  */
-public class ArticleSwedishGenerator implements ArticleGenerator{
+public class CatchSwedishArticles implements ArticleGenerator{
 
   //not supported yet - made only for show strategy
   @Override

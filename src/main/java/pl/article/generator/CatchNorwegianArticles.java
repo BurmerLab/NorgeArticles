@@ -1,4 +1,4 @@
-package pl.norwegian.generator;
+package pl.article.generator;
 /**
  *
  * @author Michal Burmer
@@ -13,9 +13,9 @@ import org.jsoup.select.Elements;
 import pl.article.ArticleGenerator;
 import pl.pojo.Article;
  
-public class ArticleNorwegianGenerator implements ArticleGenerator{
+public class CatchNorwegianArticles implements ArticleGenerator{
   
-  public Map<Long, Article> article = new HashMap<Long, Article>();
+//  public Map<Long, Article> article = new HashMap<Long, Article>();
   
   @Override
   public Map<Integer, Article> obtainArticleParameters(int count, String pageAddress) throws IOException{

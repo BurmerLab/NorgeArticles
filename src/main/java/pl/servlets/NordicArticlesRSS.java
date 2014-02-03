@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.servlets;
 
 import java.io.IOException;
@@ -14,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pl.norwegian.generator.ArticleNorwegianGenerator;
+import pl.article.generator.CatchNorwegianArticles;
 import pl.pojo.Article;
 
 /**
@@ -47,23 +43,8 @@ public class NordicArticlesRSS extends HttpServlet {
       out.println("\t\t<link>http://bt.no</link>");
       out.println("\t\t<description>Latest "+countArticlesPack+" pack articles</description>");
       
-      Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-      ArticleNorwegianGenerator articleGenerator = new ArticleNorwegianGenerator();
+      GeneratorRSS.printArticleInRssFormat(countArticlesPack, pageAddress, out);
       
-      for(int x = 1; x <= countArticlesPack; x++){
-        allArticles = articleGenerator.obtainArticleParameters(x, pageAddress);
-        for(int z = 1; z < allArticles.size(); z++){
-          
-          Article article = allArticles.get(z);
-          
-          if(! article.getTitle().equals("o") || article.getTitle().equals("1")){
-            out.println("\t\t\t<item>");
-            out.println("\t\t\t\t<title>"+ article.getTitle() +"</title>");
-            out.println("\t\t\t\t<link>"+ article.getHref() +"</link>");
-            out.println("\t\t\t</item>");
-          }
-        }
-      }
       out.println("\t</channel>");
       out.println("</rss>");
     } finally {      
@@ -111,5 +92,7 @@ public class NordicArticlesRSS extends HttpServlet {
   public String getServletInfo() {
     return "Short description";
   }// </editor-fold>
+
+  
 
 }

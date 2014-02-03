@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.article.webservices;
 
 import java.util.ArrayList;
@@ -13,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.PathParam;
-import pl.norwegian.generator.ArticleNorwegianGenerator;
+import pl.article.generator.CatchNorwegianArticles;
 import pl.pojo.Article;
 
 /**
@@ -22,6 +18,7 @@ import pl.pojo.Article;
  */
 @Path("/rest")
 public class ArticleWebServices {
+  
 //http://localhost:8084/BergenT/rest/getArticleFromWebsite/bt.no/count/1
   @GET
   @Path("/getArticleFromWebsite/{websiteAddress}/count/{number}")
@@ -32,7 +29,7 @@ public class ArticleWebServices {
     
     try {
       Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-      ArticleNorwegianGenerator articleGenerator = new ArticleNorwegianGenerator();
+      CatchNorwegianArticles articleGenerator = new CatchNorwegianArticles();
       List<Article> articleList = new ArrayList<Article>();
       
       for(int x = 1; x<=number; x++){

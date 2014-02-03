@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package pl.article;
+package pl.bt.sandbox;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

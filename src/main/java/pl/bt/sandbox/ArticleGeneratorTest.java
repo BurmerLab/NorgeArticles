@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.bt.sandbox;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import pl.norwegian.generator.ArticleNorwegianGenerator;
+import pl.article.NorwegianArticlesImpl;
+import pl.article.generator.CatchNorwegianArticles;
 import pl.pojo.Article;
 
 /**
@@ -16,15 +13,14 @@ import pl.pojo.Article;
  */
 public class ArticleGeneratorTest {
 
-  /**
-   * @param args the command line arguments
-   */
  public static void main(String[] args) {
     final String pageAddress = "bt.no/";
 	
     try {
       Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-      ArticleNorwegianGenerator articleGenerator = new ArticleNorwegianGenerator();
+      CatchNorwegianArticles articleGenerator = new CatchNorwegianArticles();
+      
+//      CatchNorwegianArticles articleGenerator = new NorwegianArticlesImpl();
       
       for(int x = 1; x<=4; x++){
         allArticles = articleGenerator.obtainArticleParameters(x, pageAddress);
