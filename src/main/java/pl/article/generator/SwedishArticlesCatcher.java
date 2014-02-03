@@ -9,7 +9,7 @@ import pl.pojo.Article;
  *
  * @author Michał
  */
-public class CatchSwedishArticles implements ArticleGenerator{
+public class SwedishArticlesCatcher implements ArticleGenerator{
 
   //not supported yet - made only for show strategy
   @Override

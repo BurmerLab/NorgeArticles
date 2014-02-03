@@ -23,16 +23,4 @@ public abstract class ArticlesStrategy {
     this.articleGenerator = articleGenerator;
   }
   
-//  public abstract class ArticlesDao { 
-//    public ArticleGenerator articleGenerator;
-//    
-//    public ArticlesDao(ArticleGenerator articleGenerator) {
-//      this.articleGenerator = articleGenerator; }
-//
-//    public Map<Integer, Article> getArticles(int count, String href) throws IOException{ 
-//      return articleGenerator.obtainArticleParameters(count, href);
-//    }
-//
-//  }
-
 }

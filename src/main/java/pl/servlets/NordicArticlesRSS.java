@@ -10,7 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pl.article.generator.CatchNorwegianArticles;
+import pl.article.GeneratorFactory;
+import pl.article.generator.NorwegianArticlesCatcher;
 import pl.pojo.Article;
 
 /**
@@ -27,12 +28,12 @@ public class NordicArticlesRSS extends HttpServlet {
     PrintWriter out = response.getWriter();
     String pageAddress;
     int countArticlesPack;
-    
-    if(request.getParameter("page") == null){
-      pageAddress = "bt.no";
+    //TODO: zlukaj tutaj
+    if(request.getParameter("sourceType") == null){
+      pageAddress = "norwegian";
       countArticlesPack = 3;
     }else{
-      pageAddress = request.getParameter("page");
+      pageAddress = request.getParameter("sourceType");
       countArticlesPack = Integer.parseInt(request.getParameter("count"));
     }
     
@@ -43,7 +44,14 @@ public class NordicArticlesRSS extends HttpServlet {
       out.println("\t\t<link>http://bt.no</link>");
       out.println("\t\t<description>Latest "+countArticlesPack+" pack articles</description>");
       
-      GeneratorRSS.printArticleInRssFormat(countArticlesPack, pageAddress, out);
+      //tutaj teraz podajemy : norwegian, swedish
+      //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      String generatorType = request.getParameter("sourceType");
+      
+      GeneratorRSS rss = new GeneratorRSS(GeneratorFactory.createGenerator(generatorType));
+      rss.printArticleInRssFormat(countArticlesPack, pageAddress, out);
+      
+//      GeneratorRSS.printArticleInRssFormat(countArticlesPack, pageAddress, out);
       
       out.println("\t</channel>");
       out.println("</rss>");

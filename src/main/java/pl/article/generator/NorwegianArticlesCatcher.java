@@ -13,7 +13,7 @@ import org.jsoup.select.Elements;
 import pl.article.ArticleGenerator;
 import pl.pojo.Article;
  
-public class CatchNorwegianArticles implements ArticleGenerator{
+public class NorwegianArticlesCatcher implements ArticleGenerator{
   
 //  public Map<Long, Article> article = new HashMap<Long, Article>();
   

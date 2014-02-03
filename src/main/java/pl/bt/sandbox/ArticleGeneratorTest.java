@@ -3,8 +3,10 @@ package pl.bt.sandbox;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import pl.article.ArticleGenerator;
+import pl.article.GeneratorFactory;
 import pl.article.NorwegianArticlesImpl;
-import pl.article.generator.CatchNorwegianArticles;
+import pl.article.generator.NorwegianArticlesCatcher;
 import pl.pojo.Article;
 
 /**
@@ -18,9 +20,11 @@ public class ArticleGeneratorTest {
 	
     try {
       Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-      CatchNorwegianArticles articleGenerator = new CatchNorwegianArticles();
+      NorwegianArticlesCatcher articleGenerator = new NorwegianArticlesCatcher();
       
-//      CatchNorwegianArticles articleGenerator = new NorwegianArticlesImpl();
+      ArticleGenerator generator = GeneratorFactory.createGenerator("bt.no");
+      
+//      NorwegianArticlesCatcher articleGenerator = new NorwegianArticlesImpl();
       
       for(int x = 1; x<=4; x++){
         allArticles = articleGenerator.obtainArticleParameters(x, pageAddress);

@@ -1,7 +1,7 @@
 package pl.article;
 
 import pl.article.ArticlesStrategy;
-import pl.article.generator.CatchNorwegianArticles;
+import pl.article.generator.NorwegianArticlesCatcher;
 
 
 /**
@@ -11,7 +11,7 @@ import pl.article.generator.CatchNorwegianArticles;
 public class NorwegianArticlesImpl extends ArticlesStrategy{
 
   public NorwegianArticlesImpl() {
-    articleGenerator = new CatchNorwegianArticles();
+    articleGenerator = new NorwegianArticlesCatcher();
   }
   
 }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.PathParam;
-import pl.article.generator.CatchNorwegianArticles;
+import pl.article.generator.NorwegianArticlesCatcher;
 import pl.pojo.Article;
 
 /**
@@ -29,7 +29,7 @@ public class ArticleWebServices {
     
     try {
       Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-      CatchNorwegianArticles articleGenerator = new CatchNorwegianArticles();
+      NorwegianArticlesCatcher articleGenerator = new NorwegianArticlesCatcher();
       List<Article> articleList = new ArrayList<Article>();
       
       for(int x = 1; x<=number; x++){

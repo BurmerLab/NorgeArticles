@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-import pl.article.generator.CatchNorwegianArticles;
+import pl.article.ArticleGenerator;
+import pl.article.generator.NorwegianArticlesCatcher;
 import pl.pojo.Article;
 
 /**
@@ -13,10 +14,17 @@ import pl.pojo.Article;
  */
 public class GeneratorRSS {
   
+  private ArticleGenerator articleGenerator;
+    
+  public GeneratorRSS(ArticleGenerator generator){
+      articleGenerator = generator;
+  }
+  
   public static void printArticleInRssFormat(int countArticlesPack, String pageAddress, PrintWriter out) throws IOException {
     Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-    CatchNorwegianArticles articleGenerator = new CatchNorwegianArticles();
     
+    NorwegianArticlesCatcher articleGenerator = new NorwegianArticlesCatcher();
+//    ArticleGenerator generator = GeneratorFactory.createGenerator(type);
     for(int x = 1; x <= countArticlesPack; x++){
       allArticles = articleGenerator.obtainArticleParameters(x, pageAddress);
       for(int z = 1; z < allArticles.size(); z++){

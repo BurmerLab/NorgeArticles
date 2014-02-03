@@ -4,7 +4,7 @@
  */
 package pl.article;
 
-import pl.article.generator.CatchSwedishArticles;
+import pl.article.generator.SwedishArticlesCatcher;
 import pl.article.ArticlesStrategy;
 
 /**
@@ -15,7 +15,7 @@ public class SwedishArticlesImpl extends ArticlesStrategy{
 
   //not supported yet - made only for show strategy
   public SwedishArticlesImpl() {
-    articleGenerator = new CatchSwedishArticles();
+    articleGenerator = new SwedishArticlesCatcher();
   }
   
   
