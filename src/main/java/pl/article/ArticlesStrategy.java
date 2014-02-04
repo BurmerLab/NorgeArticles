@@ -15,12 +15,4 @@ public abstract class ArticlesStrategy {
   
   public ArticleCatcher articleCatcher;
   
-//  public void performArticle(int count, String href) throws IOException{
-//    articleCatcher.obtainArticleParameters(count);
-//  }
-//
-//  public void setArticleGenerator(ArticleCatcher articleGenerator) {
-//    this.articleCatcher = articleGenerator;
-//  }
-  
 }
