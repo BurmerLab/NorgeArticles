@@ -15,7 +15,7 @@ public class SwedishArticlesImpl extends ArticlesStrategy{
 
   //not supported yet - made only for show strategy
   public SwedishArticlesImpl() {
-    articleGenerator = new SwedishArticlesCatcher();
+    articleCatcher = new SwedishArticlesCatcher();
   }
   
   

@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pl.article.GeneratorFactory;
-import pl.article.generator.NorwegianArticlesCatcher;
+import pl.article.generator.AftenpostenArticlesCatcher;
 import pl.pojo.Article;
 
 /**
  *
  * @author Michał Burmer
  */
-//localhost:8084/BergenT/NordicArticlesRSS.rss?page=bt.no&count=4
+//localhost:8084/BergenT/NordicArticlesRSS.rss?sourceType=aftenposten&count=4
 @WebServlet(name = "NordicArticlesRSS", urlPatterns = {"/NordicArticlesRSS.rss"} )
 public class NordicArticlesRSS extends HttpServlet {
   
@@ -26,11 +26,12 @@ public class NordicArticlesRSS extends HttpServlet {
           throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
+    
     String pageAddress;
     int countArticlesPack;
-    //TODO: zlukaj tutaj
+    
     if(request.getParameter("sourceType") == null){
-      pageAddress = "norwegian";
+      pageAddress = "bergenstidende";
       countArticlesPack = 3;
     }else{
       pageAddress = request.getParameter("sourceType");
@@ -44,14 +45,12 @@ public class NordicArticlesRSS extends HttpServlet {
       out.println("\t\t<link>http://bt.no</link>");
       out.println("\t\t<description>Latest "+countArticlesPack+" pack articles</description>");
       
-      //tutaj teraz podajemy : norwegian, swedish
-      //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       String generatorType = request.getParameter("sourceType");
       
       GeneratorRSS rss = new GeneratorRSS(GeneratorFactory.createGenerator(generatorType));
-      rss.printArticleInRssFormat(countArticlesPack, pageAddress, out);
-      
+//      GeneratorRSS rss = new new AftenpostenArticlesCatcher();
 //      GeneratorRSS.printArticleInRssFormat(countArticlesPack, pageAddress, out);
+      rss.printArticleInRssFormat(countArticlesPack, out);
       
       out.println("\t</channel>");
       out.println("</rss>");

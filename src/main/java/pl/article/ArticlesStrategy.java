@@ -13,14 +13,14 @@ import pl.pojo.Article;
  */
 public abstract class ArticlesStrategy {
   
-  public ArticleGenerator articleGenerator;
+  public ArticleCatcher articleCatcher;
   
-  public void performArticle(int count, String href) throws IOException{
-    articleGenerator.obtainArticleParameters(count, href);
-  }
-
-  public void setArticleGenerator(ArticleGenerator articleGenerator) {
-    this.articleGenerator = articleGenerator;
-  }
+//  public void performArticle(int count, String href) throws IOException{
+//    articleCatcher.obtainArticleParameters(count);
+//  }
+//
+//  public void setArticleGenerator(ArticleCatcher articleGenerator) {
+//    this.articleCatcher = articleGenerator;
+//  }
   
 }

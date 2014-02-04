@@ -1,6 +1,8 @@
 package pl.article;
 
-import pl.article.generator.NorwegianArticlesCatcher;
+import pl.article.generator.BergensTidendeArticlesCatcher;
+import pl.article.generator.FaedrelandsvennenArticleCatcher;
+import pl.article.generator.AftenpostenArticlesCatcher;
 import pl.article.generator.SwedishArticlesCatcher;
 
 /**
@@ -8,16 +10,23 @@ import pl.article.generator.SwedishArticlesCatcher;
  * @author Michał
  */
 public class GeneratorFactory {
-   public static ArticleGenerator createGenerator(String generatorType){
-       if(generatorType.equals("swedish")){
-           return new SwedishArticlesCatcher();
+   public static ArticleCatcher createGenerator(String generatorType){
+       
+     if(generatorType.equals("aftenposten")){
+           return new AftenpostenArticlesCatcher();
            
-       }else if(generatorType.equals("norwegian")){
-           return new NorwegianArticlesCatcher();
+       }else if(generatorType.equals("bergenstidende")){
+           return new BergensTidendeArticlesCatcher();
+           
+       }else if(generatorType.equals("Faedrelandsvennen ")){
+           return new FaedrelandsvennenArticleCatcher();
+           
+       }else if(generatorType.equals("swedish")){
+           return new SwedishArticlesCatcher();
        }
        
        throw new UnsupportedOperationException("There is no strategy");
-   }
+  }
 }
 
 //i teraz uzycie w servlecie:
@@ -28,4 +37,4 @@ public class GeneratorFactory {
 // cos tu robi 
 // String type = request.getParameter("articlesType") ; 
 // tutaj "swedish', 'norwegian'
-// ArticleGenerator generator = GeneratorFactory.createGenerator(type); // cos robi }
+// ArticleCatcher generator = GeneratorFactory.createGenerator(type); // cos robi }

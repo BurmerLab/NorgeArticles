@@ -10,17 +10,17 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import pl.article.ArticleGenerator;
+import pl.article.ArticleCatcher;
 import pl.pojo.Article;
  
-public class NorwegianArticlesCatcher implements ArticleGenerator{
+public class FaedrelandsvennenArticleCatcher implements ArticleCatcher{
   
 //  public Map<Long, Article> article = new HashMap<Long, Article>();
   
   @Override
-  public Map<Integer, Article> obtainArticleParameters(int count, String pageAddress) throws IOException{
+  public Map<Integer, Article> obtainArticleParameters(int count) throws IOException{
       
-      Document website = Jsoup.connect("http://" + pageAddress).get();
+      Document website = Jsoup.connect("http://fvn.no").get();
       Elements master = website.select(".gridRow.contentLevel"+count);//.default.noThemeHeadline
       Elements links = master.select("a");
       
