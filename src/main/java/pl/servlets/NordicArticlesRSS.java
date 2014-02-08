@@ -27,33 +27,21 @@ public class NordicArticlesRSS extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     
-    String pageAddress;
+    String generatorType;
     int countArticlesPack;
     
     if(request.getParameter("sourceType") == null){
-      pageAddress = "bergenstidende";
+      generatorType = "bergenstidende";
       countArticlesPack = 3;
     }else{
-      pageAddress = request.getParameter("sourceType");
+      generatorType = request.getParameter("sourceType");
       countArticlesPack = Integer.parseInt(request.getParameter("count"));
     }
     
     try {
-      out.println("<rss version=\"2.0\">");
-      out.println("\t<channel>");
-      out.println("\t\t<title>Articles from " + pageAddress+ "</title>");
-      out.println("\t\t<link>http://bt.no</link>");
-      out.println("\t\t<description>Latest "+countArticlesPack+" pack articles</description>");
-      
-      String generatorType = request.getParameter("sourceType");
-      
       GeneratorRSS rss = new GeneratorRSS(GeneratorFactory.createGenerator(generatorType));
-//      GeneratorRSS rss = new new AftenpostenArticlesCatcher();
-//      GeneratorRSS.printArticleInRssFormat(countArticlesPack, pageAddress, out);
-      rss.printArticleInRssFormat(countArticlesPack, out);
+      out.println(rss.printArticleInRssFormat(countArticlesPack, generatorType));
       
-      out.println("\t</channel>");
-      out.println("</rss>");
     } finally {      
       out.close();
     }

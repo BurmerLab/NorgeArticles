@@ -15,7 +15,11 @@ import pl.pojo.Article;
  
 public class AftenpostenArticlesCatcher implements ArticleCatcher{
   
-//  public Map<Long, Article> article = new HashMap<Long, Article>();
+  private String page = "aftenposten.no";
+
+  public String getPage() {
+    return page;
+  }
   
   @Override
   public Map<Integer, Article> obtainArticleParameters(int count) throws IOException{
@@ -36,7 +40,7 @@ public class AftenpostenArticlesCatcher implements ArticleCatcher{
             
         Article article = new Article();
         article.setId(y);
-       
+        
         if(isArticleWithOnlyImage(link)){
           article.setImage(img.absUrl("src"));
           article.setHref(linkHref);
@@ -47,11 +51,9 @@ public class AftenpostenArticlesCatcher implements ArticleCatcher{
           article.setTitle(linkTitle);
           
           if(articleParameters.containsKey(counter-1)){
-            counter -= 1;
-            Article articleWithPhoto = articleParameters.get(counter);
-            counter += 1;
+            Article articleWithPhoto = articleParameters.get(counter-1);
             if(articleWithPhoto.getHref().equals(article.getHref())){
-              articleParameters.remove(counter);
+              articleParameters.remove(counter-1);
               article.setImage(articleWithPhoto.getImage());
             }
           }

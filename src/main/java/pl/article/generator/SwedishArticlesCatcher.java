@@ -11,6 +11,12 @@ import pl.pojo.Article;
  */
 public class SwedishArticlesCatcher implements ArticleCatcher{
 
+  private String page = "swedish.se";
+  
+  public String getPage() {
+    return page;
+  }
+  
   //not supported yet - made only for show strategy
   @Override
   public Map<Integer, Article> obtainArticleParameters(int count) throws IOException {

@@ -26,22 +26,19 @@ public class GeneratorArticleWebService {
   public String generateArticlesForWebService(int number) throws IOException {
     String allArticlesFromWebsite;
     Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
-    
-//    NorwegianArticlesCatcher articleGenerator = new NorwegianArticlesCatcher();
     List<Article> articleList = new ArrayList<Article>();
-    for(int x = 1; x<=number; x++){
+    
+    for(int x = 1; x <=number; x++){
       allArticles = articleGenerator.obtainArticleParameters(x);
-      for(int z = 1; z < allArticles.size(); z++){
-        
-        Article article = allArticles.get(z);
-        if(! article.getTitle().equals("o") || article.getTitle().equals("1")){
+        for (Map.Entry entry : allArticles.entrySet()) {
+          Article article = (Article) entry.getValue();
           articleList.add(article);
             System.out.println("id:  " + article.getId()); 
             System.out.println("Href:  " + article.getHref()); 
             System.out.println("Title:  " + article.getTitle()); 
             System.out.println("Image:  " + article.getImage()); 
             System.out.println("=========");
-        }
+//        }
       }
     }
     Gson gson = new Gson();

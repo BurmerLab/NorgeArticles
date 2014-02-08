@@ -25,7 +25,7 @@ public class WebServiceTest {
     return allArticlesFromWebsite;
   }
   public static void main(String[] args) {
-    String articles = getArticles("aftenposten", 3);
-    System.out.println("TEST: " + articles);
+    String articles = getArticles("bergenstidende", 4);
+//    System.out.println("TEST: " + articles);
   }
 }

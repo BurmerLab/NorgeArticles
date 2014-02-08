@@ -18,7 +18,7 @@ public class GeneratorFactory {
        }else if(generatorType.equals("bergenstidende")){
            return new BergensTidendeArticlesCatcher();
            
-       }else if(generatorType.equals("Faedrelandsvennen ")){
+       }else if(generatorType.equals("faedrelandsvennen ")){
            return new FaedrelandsvennenArticleCatcher();
            
        }else if(generatorType.equals("swedish")){

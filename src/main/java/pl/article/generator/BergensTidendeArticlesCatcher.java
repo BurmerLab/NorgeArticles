@@ -15,7 +15,11 @@ import pl.pojo.Article;
  
 public class BergensTidendeArticlesCatcher implements ArticleCatcher{
   
-//  public Map<Long, Article> article = new HashMap<Long, Article>();
+  private String page = "bt.no";
+  
+  public String getPage() {
+    return page;
+  }
   
   @Override
   public Map<Integer, Article> obtainArticleParameters(int count) throws IOException{
@@ -24,7 +28,7 @@ public class BergensTidendeArticlesCatcher implements ArticleCatcher{
       Elements master = website.select(".gridRow.contentLevel"+count);//.default.noThemeHeadline
       Elements links = master.select("a");
       
-      Map<Integer, Article> articleParameters = new HashMap<Integer, Article>();
+      Map<Integer, Article> allArticles = new HashMap<Integer, Article>();
       int counter = 0;
       
       for(int y=0; y < links.size(); y++){
@@ -36,7 +40,7 @@ public class BergensTidendeArticlesCatcher implements ArticleCatcher{
             
         Article article = new Article();
         article.setId(y);
-       
+        
         if(isArticleWithOnlyImage(link)){
           article.setImage(img.absUrl("src"));
           article.setHref(linkHref);
@@ -45,24 +49,32 @@ public class BergensTidendeArticlesCatcher implements ArticleCatcher{
           article.setImage("");
           article.setHref(linkHref);
           article.setTitle(linkTitle);
-          
-          if(articleParameters.containsKey(counter-1)){
-            counter -= 1;
-            Article articleWithPhoto = articleParameters.get(counter);
-            counter += 1;
+
+          if(allArticles.containsKey(counter-1)){
+            Article articleWithPhoto = allArticles.get(counter-1);
             if(articleWithPhoto.getHref().equals(article.getHref())){
-              articleParameters.remove(counter);
+              allArticles.remove(counter-1);
               article.setImage(articleWithPhoto.getImage());
             }
           }
         }
-        articleParameters.put(y, article);
+        allArticles.put(y, article);
         counter ++;
       }
-    return articleParameters;
+    return allArticles;
     }
-
+  
   private boolean isArticleWithOnlyImage(Element link) {
-    return link.text().equals("o") || link.text().equals("1");
+    return link.text().equals("o") || link.text().equals("l");
   }
+
+
+
+
+
+
+
+
+
+
 }

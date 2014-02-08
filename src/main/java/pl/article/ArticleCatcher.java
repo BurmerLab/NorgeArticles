@@ -9,5 +9,6 @@ import pl.pojo.Article;
  * @author Michał
  */
 public interface ArticleCatcher {
+   public String getPage();
    public Map<Integer, Article> obtainArticleParameters(int count) throws IOException;
 }
