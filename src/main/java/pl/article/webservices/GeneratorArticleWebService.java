@@ -30,7 +30,7 @@ public class GeneratorArticleWebService {
     
     for(int x = 1; x <=number; x++){
       allArticles = articleGenerator.obtainArticleParameters(x);
-        for (Map.Entry entry : allArticles.entrySet()) {
+        for(Map.Entry entry : allArticles.entrySet()) {
           Article article = (Article) entry.getValue();
           articleList.add(article);
             System.out.println("id:  " + article.getId()); 

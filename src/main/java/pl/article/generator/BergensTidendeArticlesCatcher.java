@@ -41,7 +41,7 @@ public class BergensTidendeArticlesCatcher implements ArticleCatcher{
         Article article = new Article();
         article.setId(y);
         
-        if(isArticleWithOnlyImage(link)){
+        if(isArticleWithOnlyImage(link, img)){
           article.setImage(img.absUrl("src"));
           article.setHref(linkHref);
           article.setTitle(linkTitle);
@@ -64,8 +64,8 @@ public class BergensTidendeArticlesCatcher implements ArticleCatcher{
     return allArticles;
     }
   
-  private boolean isArticleWithOnlyImage(Element link) {
-    return link.text().equals("o") || link.text().equals("l");
+  private boolean isArticleWithOnlyImage(Element link, Element img) {
+    return (link.text().equals("o") || link.text().equals("l") ) && img!=null;
   }
 
 

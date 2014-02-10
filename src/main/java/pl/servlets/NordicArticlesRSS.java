@@ -40,7 +40,7 @@ public class NordicArticlesRSS extends HttpServlet {
     
     try {
       GeneratorRSS rss = new GeneratorRSS(GeneratorFactory.createGenerator(generatorType));
-      out.println(rss.printArticleInRssFormat(countArticlesPack, generatorType));
+      out.println(rss.printArticleInRssFormat(countArticlesPack));
       
     } finally {      
       out.close();

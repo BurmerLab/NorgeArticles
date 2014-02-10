@@ -18,7 +18,7 @@ import pl.servlets.GeneratorRSS;
  *
  * @author Michał
  */
-@Path("/rest")
+@Path("")
 public class ArticleWebServices {
   
 //http://localhost:8084/BergenT/rest/getArticles/aftenposten/count/1

@@ -18,7 +18,7 @@ public class ServletTest {
     String allArticlesFromWebsite  = null;
     try {
       GeneratorRSS rss = new GeneratorRSS(GeneratorFactory.createGenerator(generatorType));
-      System.out.println(rss.printArticleInRssFormat(number, generatorType));
+      System.out.println(rss.printArticleInRssFormat(number));
       
     } catch (Exception e){
             System.out.println("error");
